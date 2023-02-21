@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
 import Home from "./pages/Home";
 import MediaLayerImages from "./pages/MediaLayerImages";
@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Router basename="/esri-devsummit-2023">
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/media-layer-images" element={<MediaLayerImages />} />
