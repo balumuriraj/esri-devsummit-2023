@@ -9,7 +9,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/esri-devsummit-2023">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/media-layer-images" element={<MediaLayerImages />} />
