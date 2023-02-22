@@ -16,14 +16,13 @@ import Swipe from "@arcgis/core/widgets/Swipe";
 import "@esri/calcite-components/dist/components/calcite-button";
 import { CalciteButton } from "@esri/calcite-components-react";
 
-import hljs from "highlight.js/lib/core";
-import javascript from "highlight.js/lib/languages/javascript";
+import Prism from "prismjs";
+import 'prismjs/plugins/line-numbers/prism-line-numbers';
 
 import "../App.css";
 import "@esri/calcite-components/dist/calcite/calcite.css";
-import "highlight.js/styles/github.css";
-
-hljs.registerLanguage("javascript", javascript);
+import "prismjs/themes/prism.css";
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 function MediaLayerImages() {
   const viewDivRef = useRef<HTMLDivElement>(null);
@@ -43,8 +42,8 @@ function MediaLayerImages() {
   }, []);
 
   async function initApp(): Promise<void> {
-    hljs.highlightAll();
-
+    Prism.highlightAll();
+    
     if (!viewDivRef?.current) {
       return;
     }
@@ -287,19 +286,18 @@ function MediaLayerImages() {
     );
   }
 
-  const codeMediaLayer = `
-  new MediaLayer({ 
+  const codeMediaLayer = 
+  `new MediaLayer({ 
     source: [
       new ImageElement({
         image: "image url or image data",
         georeference: {...}
       })
     ] 
-  });
-  `;
+  });`;
 
-  const codeExtentAndRotationGeoreference = `
-  new ExtentAndRotationGeoreference({
+  const codeExtentAndRotationGeoreference = 
+  `new ExtentAndRotationGeoreference({
     extent: new Extent({
       spatialReference: { wkid: 102100 },
       xmin: -10047456.27662979,
@@ -307,11 +305,10 @@ function MediaLayerImages() {
       xmax: -10006982.870152846,
       ymax: 3514468.91365495,
     }),
-  })
-  `;
+  })`;
 
-  const codeCornersGeoreference = `
-  new CornersGeoreference({
+  const codeCornersGeoreference = 
+  `new CornersGeoreference({
     bottomRight: new Point({
       x: -10008215.143195309,
       y: 3486794.2321162825,
@@ -332,11 +329,10 @@ function MediaLayerImages() {
       y: 3514418.4006159767,
       spatialReference: { wkid: 102100 },
     }),
-  })
-  `;
+  })`;
 
-  const codeControlPointsGeoreference = `
-  new ControlPointsGeoreference({
+  const codeControlPointsGeoreference = 
+  `new ControlPointsGeoreference({
     width: 1246,
     height: 669,
     controlPoints: [
@@ -373,16 +369,15 @@ function MediaLayerImages() {
         }),
       },
     ],
-  })
-  `;
+  })`;
 
   return (
     <div className="App">
       <div id="view" ref={viewDivRef}></div>
       <div ref={codeMediaLayerRef} className="card">
         <p>MediaLayer</p>
-        <pre>
-          <code className="javascript">{codeMediaLayer}</code>
+        <pre className="line-numbers">
+          <code className="language-js">{codeMediaLayer}</code>
         </pre>
         <CalciteButton
           className="btn"
@@ -392,8 +387,8 @@ function MediaLayerImages() {
       </div>
       <div ref={codeExtentAndRotationGeoreferenceRef} className="card">
         <p>ExtentAndRotationGeoreference</p>
-        <pre>
-          <code className="javascript">
+        <pre className="line-numbers">
+          <code className="language-js">
             {codeExtentAndRotationGeoreference}
           </code>
         </pre>
@@ -405,8 +400,8 @@ function MediaLayerImages() {
       </div>
       <div ref={codeCornersGeoreferenceRef} className="card">
         <p>CornersGeoreference</p>
-        <pre>
-          <code className="javascript">{codeCornersGeoreference}</code>
+        <pre className="line-numbers">
+          <code className="language-js">{codeCornersGeoreference}</code>
         </pre>
         <CalciteButton
           className="btn"
@@ -416,8 +411,8 @@ function MediaLayerImages() {
       </div>
       <div ref={codeControlPointsGeoreferenceRef} className="card">
         <p>ControlPointsGeoreference</p>
-        <pre>
-          <code className="javascript">{codeControlPointsGeoreference}</code>
+        <pre className="line-numbers">
+          <code className="language-js">{codeControlPointsGeoreference}</code>
         </pre>
         <CalciteButton
           className="btn"

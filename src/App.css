@@ -15,7 +15,7 @@ body {
 
 .card {
   background-color: #fff;
-  overflow: scroll;
+  overflow: auto;
   max-height: 500px;
   position: relative;
 }
@@ -26,18 +26,9 @@ body {
   right: 5px;
 }
 
-div.code {
-  white-space: pre;  
-}
-
 .card p {
   font-weight: bold;
   margin-left: 20px;
-}
-
-.card code {
-  background-color:antiquewhite;
-  font-size: 15px;
 }
 
 .slider {

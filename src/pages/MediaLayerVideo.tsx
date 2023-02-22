@@ -13,14 +13,13 @@ import Slider from "@arcgis/core/widgets/Slider";
 import "@esri/calcite-components/dist/components/calcite-button";
 import { CalciteButton } from "@esri/calcite-components-react";
 
-import hljs from "highlight.js/lib/core";
-import javascript from "highlight.js/lib/languages/javascript";
+import Prism from "prismjs";
+import 'prismjs/plugins/line-numbers/prism-line-numbers';
 
 import "../App.css";
 import "@esri/calcite-components/dist/calcite/calcite.css";
-import "highlight.js/styles/github.css";
-
-hljs.registerLanguage("javascript", javascript);
+import "prismjs/themes/prism.css";
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
 
 function MediaLayerVideo() {
   const viewDivRef = useRef<HTMLDivElement>(null);
@@ -38,7 +37,7 @@ function MediaLayerVideo() {
   }, []);
 
   async function initApp(): Promise<void> {
-    hljs.highlightAll();
+    Prism.highlightAll();
 
     if (!viewDivRef?.current) {
       return;
@@ -128,8 +127,8 @@ function MediaLayerVideo() {
     });
   }
 
-  const code = `
-  new MediaLayer({ 
+  const code = 
+  `new MediaLayer({ 
     source: [
       new VideoElement({
         video: "video url",
@@ -141,16 +140,15 @@ function MediaLayerVideo() {
         }),
       })
     ] 
-  });
-  `;
+  });`;
 
   return (
     <div className="App">
       <div id="view" ref={viewDivRef}></div>
       <div ref={codeRef} className="card">
         <p>MediaLayer</p>
-        <pre>
-          <code className="javascript">{code}</code>
+        <pre className="line-numbers">
+          <code className="language-js">{code}</code>
         </pre>
 
         <div ref={sliderRef} className="slider"></div>
