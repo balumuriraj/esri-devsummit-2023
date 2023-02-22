@@ -83,7 +83,7 @@ function MediaLayerVideo() {
   async function run() {
     const element = new VideoElement({
       video:
-        "https://arcgis.github.io/arcgis-samples-javascript/sample-data/media-layer/videos/hurricanes_aerosol-aug.mp4",
+        "/aerosol.mp4",
       georeference: new ExtentAndRotationGeoreference({
         extent: new Extent({
           xmin: -150,
@@ -129,17 +129,15 @@ function MediaLayerVideo() {
 
   const code = 
   `new MediaLayer({ 
-    source: [
-      new VideoElement({
-        video: "video url",
-        georeference: new ExtentAndRotationGeoreference({
-          extent: new Extent({
-            xmin: -150, ymin: 1, xmax: 20, ymax: 80,
-            spatialReference: { wkid: 4326 }
-          }),
-        }),
+    source: new VideoElement({
+      video: "/aerosol.mp4",
+      georeference: new ExtentAndRotationGeoreference({
+        extent: new Extent({
+          xmin: -150, ymin: 1, xmax: 20, ymax: 80,
+          spatialReference: { wkid: 4326 }
+        })
       })
-    ] 
+    }) 
   });`;
 
   return (

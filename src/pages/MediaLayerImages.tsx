@@ -17,18 +17,16 @@ import "@esri/calcite-components/dist/components/calcite-button";
 import { CalciteButton } from "@esri/calcite-components-react";
 
 import Prism from "prismjs";
-import 'prismjs/plugins/line-numbers/prism-line-numbers';
+import "prismjs/plugins/line-numbers/prism-line-numbers";
 
 import "../App.css";
 import "@esri/calcite-components/dist/calcite/calcite.css";
 import "prismjs/themes/prism.css";
-import 'prismjs/plugins/line-numbers/prism-line-numbers.css';
+import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 
 function MediaLayerImages() {
   const viewDivRef = useRef<HTMLDivElement>(null);
   const codeMediaLayerRef = useRef<HTMLDivElement>(null);
-  const codeExtentAndRotationGeoreferenceRef = useRef<HTMLDivElement>(null);
-  const codeCornersGeoreferenceRef = useRef<HTMLDivElement>(null);
   const codeControlPointsGeoreferenceRef = useRef<HTMLDivElement>(null);
 
   const [view, setView] = useState<MapView | null>(null);
@@ -43,7 +41,7 @@ function MediaLayerImages() {
 
   async function initApp(): Promise<void> {
     Prism.highlightAll();
-    
+
     if (!viewDivRef?.current) {
       return;
     }
@@ -51,22 +49,18 @@ function MediaLayerImages() {
     esriConfig.portalUrl = "http://arcgis.com/";
 
     const map = new Map({
-      basemap: {
-        portalItem: {
-          id: "3582b744bba84668b52a16b0b6942544",
-        },
-      },
+      basemap: "satellite"
+      // basemap: {
+      //   portalItem: {
+      //     id: "3582b744bba84668b52a16b0b6942544",
+      //   },
+      // },
     });
 
     const view = new MapView({
       container: viewDivRef?.current,
       map: map,
-      zoom: 10,
-      center: [-89.93307, 29.973197296501905],
-      constraints: {
-        snapToZoom: false,
-        minScale: 1155582,
-      },
+      zoom: 3
     });
 
     view.ui.add(
@@ -77,18 +71,6 @@ function MediaLayerImages() {
           expanded: true,
           group: "group1",
           expandTooltip: "MediaLayer",
-        }),
-        new Expand({
-          view: view,
-          content: codeExtentAndRotationGeoreferenceRef?.current!,
-          group: "group1",
-          expandTooltip: "ExtentAndRotationGeoreference",
-        }),
-        new Expand({
-          view: view,
-          content: codeCornersGeoreferenceRef?.current!,
-          group: "group1",
-          expandTooltip: "CornersGeoreference",
         }),
         new Expand({
           view: view,
@@ -105,16 +87,16 @@ function MediaLayerImages() {
 
   async function runMediaLayer() {
     const imageElement = new ImageElement({
-      image: `https://arcgis.github.io/arcgis-samples-javascript/sample-data/media-layer/new-orleans/chef-menteur1892.png`,
+      image: `Liverpool.png`,
       georeference: new ExtentAndRotationGeoreference({
         extent: new Extent({
           spatialReference: {
             wkid: 102100,
           },
-          xmax: -10003257.6023701,
-          xmin: -10043731.008847024,
-          ymax: 3513936.582106864,
-          ymin: 3486773.1082574953,
+          xmin: -339441.5168570463,
+          ymin: 7051887.318179514,
+          xmax: -324839.58261292917,
+          ymax: 7067371.687353565,
         }),
       }),
     });
@@ -139,132 +121,51 @@ function MediaLayerImages() {
     view!.ui.add(swipe);
     view?.goTo(
       new Extent({
-        spatialReference: {
-          wkid: 102100,
-        },
-        xmax: -10003257.6023701,
-        xmin: -10043731.008847024,
-        ymax: 3513936.582106864,
-        ymin: 3486773.1082574953,
-      }).expand(1.5)
-    );
-  }
-
-  function runExtentAndRotationGeoreference() {
-    const imageElement = new ImageElement({
-      image: `https://arcgis.github.io/arcgis-samples-javascript/sample-data/media-layer/new-orleans/neworleans1891.png`,
-      georeference: new ExtentAndRotationGeoreference({
-        extent: new Extent({
-          spatialReference: {
-            wkid: 102100,
-          },
-          xmin: -10047456.27662979,
-          ymin: 3486722.2723874687,
-          xmax: -10006982.870152846,
-          ymax: 3514468.91365495,
-        }),
-      }),
-    });
-
-    layer!.source!.elements!.add(imageElement);
-    view?.goTo(
-      new Extent({
-        spatialReference: {
-          wkid: 102100,
-        },
-        xmin: -10047456.27662979,
-        ymin: 3486722.2723874687,
-        xmax: -10006982.870152846,
-        ymax: 3514468.91365495,
-      }).expand(1.5)
-    );
-  }
-
-  function runCornersGeoreference() {
-    const imageElement = new ImageElement({
-      image: `https://arcgis.github.io/arcgis-samples-javascript/sample-data/media-layer/new-orleans/spanish-fort1891.png`,
-      georeference: new CornersGeoreference({
-        bottomRight: new Point({
-          x: -10008215.143195309,
-          y: 3486794.2321162825,
-          spatialReference: {
-            wkid: 102100,
-          },
-        }),
-        bottomLeft: new Point({
-          x: -10061466.93004702,
-          y: 3486794.2321162825,
-          spatialReference: {
-            wkid: 102100,
-          },
-        }),
-        topRight: new Point({
-          x: -10008215.143195309,
-          y: 3514418.4006159767,
-          spatialReference: {
-            wkid: 102100,
-          },
-        }),
-        topLeft: new Point({
-          x: -10061466.93004702,
-          y: 3514418.4006159767,
-          spatialReference: {
-            wkid: 102100,
-          },
-        }),
-      }),
-    });
-
-    layer!.source!.elements!.add(imageElement);
-    view?.goTo(
-      new Extent({
-        spatialReference: {
-          wkid: 102100,
-        },
-        xmax: -10008215.143195309,
-        xmin: -10061466.93004702,
-        ymax: 3514418.4006159767,
-        ymin: 3486794.2321162825,
-      }).expand(1.5)
+        spatialReference: { wkid: 102100 },
+        xmin: -339441.5168570463,
+        ymin: 7051887.318179514,
+        xmax: -324839.58261292917,
+        ymax: 7067371.687353565,
+      }).expand(1.15)
     );
   }
 
   function runControlPointsGeoreference() {
     const imageElement = new ImageElement({
-      image: `https://arcgis.github.io/arcgis-samples-javascript/sample-data/media-layer/new-orleans/st-bernard1892.png`,
+      image: `/Florence.jpeg`,
       georeference: new ControlPointsGeoreference({
-        width: 1246,
-        height: 669,
+        width: 1000,
+        height: 755,
         controlPoints: [
           {
-            sourcePoint: { x: 0, y: 669 },
+            sourcePoint: { x: 333.1103679715381, y: 701.3716189418546 },
             mapPoint: new Point({
-              x: -10046739.695935503,
-              y: 3486942.691935667,
+              x: 1253618.039700887,
+              y: 5431979.08855724,
               spatialReference: { wkid: 102100 },
             }),
           },
           {
-            sourcePoint: { x: 0, y: 0 },
+            sourcePoint: { x: 398.7804080468498, y: 210.55393624690095 },
             mapPoint: new Point({
-              x: -10046739.695935503,
-              y: 3514979.040597104,
+              x: 1253341.6272831117,
+              y: 5429407.568274674,
               spatialReference: { wkid: 102100 },
             }),
           },
           {
-            sourcePoint: { x: 1246, y: 0 },
+            sourcePoint: { x: 782.5730994340726, y: 32.883345812941776 },
             mapPoint: new Point({
-              x: -10001415.789436923,
-              y: 3514979.040597104,
+              x: 1251382.0560864767,
+              y: 5428515.5447955085,
               spatialReference: { wkid: 102100 },
             }),
           },
           {
-            sourcePoint: { x: 1246, y: 669 },
+            sourcePoint: { x: 584.0987277033045, y: 575.8665575893785 },
             mapPoint: new Point({
-              x: -10001415.789436923,
-              y: 3486942.691935667,
+              x: 1252304.6469130863,
+              y: 5431344.704144045,
               spatialReference: { wkid: 102100 },
             }),
           },
@@ -278,98 +179,67 @@ function MediaLayerImages() {
         spatialReference: {
           wkid: 102100,
         },
-        xmax: -10001415.789436923,
-        xmin: -10046739.695935503,
-        ymax: 3514979.040597104,
-        ymin: 3486942.691935667,
+        xmax: 1255341.985632734,
+        xmin: 1249946.5201307742,
+        ymax: 5432421.928455123,
+        ymin: 5428347.876590912,
       }).expand(1.5)
     );
   }
 
-  const codeMediaLayer = 
-  `new MediaLayer({ 
-    source: [
-      new ImageElement({
-        image: "image url or image data",
-        georeference: {...}
+  const codeMediaLayer = `new MediaLayer({ 
+  source: new ImageElement({
+    image: "/Liverpool.png",
+    georeference: new ExtentAndRotationGeoreference({
+      extent: new Extent({
+        spatialReference: { wkid: 102100 },
+        xmin: -339441.5168570463,
+        ymin: 7051887.318179514,
+        xmax: -324839.58261292917,
+        ymax: 7067371.687353565,
       })
-    ] 
-  });`;
+    })
+  })
+});`;
 
-  const codeExtentAndRotationGeoreference = 
-  `new ExtentAndRotationGeoreference({
-    extent: new Extent({
-      spatialReference: { wkid: 102100 },
-      xmin: -10047456.27662979,
-      ymin: 3486722.2723874687,
-      xmax: -10006982.870152846,
-      ymax: 3514468.91365495,
-    }),
-  })`;
-
-  const codeCornersGeoreference = 
-  `new CornersGeoreference({
-    bottomRight: new Point({
-      x: -10008215.143195309,
-      y: 3486794.2321162825,
-      spatialReference: { wkid: 102100 },
-    }),
-    bottomLeft: new Point({
-      x: -10061466.93004702,
-      y: 3486794.2321162825,
-      spatialReference: { wkid: 102100 },
-    }),
-    topRight: new Point({
-      x: -10008215.143195309,
-      y: 3514418.4006159767,
-      spatialReference: { wkid: 102100 },
-    }),
-    topLeft: new Point({
-      x: -10061466.93004702,
-      y: 3514418.4006159767,
-      spatialReference: { wkid: 102100 },
-    }),
-  })`;
-
-  const codeControlPointsGeoreference = 
-  `new ControlPointsGeoreference({
-    width: 1246,
-    height: 669,
-    controlPoints: [
-      {
-        sourcePoint: { x: 0, y: 669 },
-        mapPoint: new Point({ 
-          x: -10046739.695935503, 
-          y: 3486942.691935667, 
-          spatialReference: { wkid: 102100 } 
-        }),
-      },
-      {
-        sourcePoint: { x: 0, y: 0 },
-        mapPoint: new Point({
-          x: -10046739.695935503,
-          y: 3514979.040597104,
-          spatialReference: { wkid: 102100 },
-        }),
-      },
-      {
-        sourcePoint: { x: 1246, y: 0 },
-        mapPoint: new Point({
-          x: -10001415.789436923,
-          y: 3514979.040597104,
-          spatialReference: { wkid: 102100 },
-        }),
-      },
-      {
-        sourcePoint: { x: 1246, y: 669 },
-        mapPoint: new Point({
-          x: -10001415.789436923,
-          y: 3486942.691935667,
-          spatialReference: { wkid: 102100 },
-        }),
-      },
-    ],
-  })`;
+  const codeControlPointsGeoreference = `new ControlPointsGeoreference({  
+  controlPoints: [
+    {
+      sourcePoint: { x: 0, y: 669 },
+      mapPoint: new Point({ 
+        x: -10046739.695935503, 
+        y: 3486942.691935667, 
+        spatialReference: { wkid: 102100 } 
+      }),
+    },
+    {
+      sourcePoint: { x: 0, y: 0 },
+      mapPoint: new Point({
+        x: -10046739.695935503,
+        y: 3514979.040597104,
+        spatialReference: { wkid: 102100 },
+      }),
+    },
+    {
+      sourcePoint: { x: 1246, y: 0 },
+      mapPoint: new Point({
+        x: -10001415.789436923,
+        y: 3514979.040597104,
+        spatialReference: { wkid: 102100 },
+      }),
+    },
+    {
+      sourcePoint: { x: 1246, y: 669 },
+      mapPoint: new Point({
+        x: -10001415.789436923,
+        y: 3486942.691935667,
+        spatialReference: { wkid: 102100 },
+      }),
+    },
+  ],
+  width: 1246,
+  height: 669
+})`;
 
   return (
     <div className="App">
@@ -383,30 +253,6 @@ function MediaLayerImages() {
           className="btn"
           icon-start="play"
           onClick={runMediaLayer}
-        ></CalciteButton>
-      </div>
-      <div ref={codeExtentAndRotationGeoreferenceRef} className="card">
-        <p>ExtentAndRotationGeoreference</p>
-        <pre className="line-numbers">
-          <code className="language-js">
-            {codeExtentAndRotationGeoreference}
-          </code>
-        </pre>
-        <CalciteButton
-          className="btn"
-          icon-start="play"
-          onClick={runExtentAndRotationGeoreference}
-        ></CalciteButton>
-      </div>
-      <div ref={codeCornersGeoreferenceRef} className="card">
-        <p>CornersGeoreference</p>
-        <pre className="line-numbers">
-          <code className="language-js">{codeCornersGeoreference}</code>
-        </pre>
-        <CalciteButton
-          className="btn"
-          icon-start="play"
-          onClick={runCornersGeoreference}
         ></CalciteButton>
       </div>
       <div ref={codeControlPointsGeoreferenceRef} className="card">

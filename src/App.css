@@ -16,7 +16,7 @@ body {
 .card {
   background-color: #fff;
   overflow: auto;
-  max-height: 500px;
+  max-height: 700px;
   position: relative;
 }
 
