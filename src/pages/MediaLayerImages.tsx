@@ -112,10 +112,32 @@ function MediaLayerImages() {
     // create a new Swipe widget
     const swipe = new Swipe({
       leadingLayers: [layer],
-      // trailingLayers: [nearInfrared],
-      position: 80, // set position of widget to 35%
+      position: 75,
       view: view!,
     });
+
+    let isLeft = true;
+    let count = 0;
+
+    const handle = setInterval(() => {
+      if (count === 2) {
+        clearInterval(handle);
+        return;
+      }
+
+      if (isLeft) {
+        swipe.position = swipe.position - 0.05;
+      } else {
+        swipe.position = swipe.position + 0.05;
+      }
+
+      if (swipe.position === 40) {
+        isLeft = false;
+      } else if (swipe.position === 75) {
+        isLeft = true;
+        count++;
+      }      
+    }, 1);
 
     // add the widget to the view
     view!.ui.add(swipe);
@@ -126,7 +148,7 @@ function MediaLayerImages() {
         ymin: 7051887.318179514,
         xmax: -324839.58261292917,
         ymax: 7067371.687353565,
-      }).expand(1.15)
+      }).expand(1)
     );
   }
 
