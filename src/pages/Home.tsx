@@ -7,7 +7,7 @@ function Home() {
   return (
     <div className="home">
       <div className="link">
-        <Link to="/media-layer-images">MediaLayerImages</Link>
+        <Link to="/media-layer-image">MediaLayerImages</Link>
       </div>
       <div className="link">
         <Link to="/media-layer-video">MediaLayerVideo</Link>

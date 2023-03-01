@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-import esriConfig from "@arcgis/core/config";
 import WebMap from "@arcgis/core/WebMap";
 import MapView from "@arcgis/core/views/MapView";
 
@@ -24,11 +23,9 @@ function MediaLayerWebmap() {
       return;
     }
 
-    esriConfig.portalUrl = "http://devtesting.mapsdevext.arcgis.com/";
-
     const webmap = new WebMap({
       portalItem: {
-        id: "d8ec80ff66324308b4abd36edf9263e4" // webmap id
+        id: "769b776b17c4406493b5f96044c26696" // 4779f8c1002443c68eb4c7fbb9baf88c
       }
     });
 

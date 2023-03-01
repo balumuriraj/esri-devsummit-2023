@@ -195,7 +195,7 @@ function MediaLayerImages() {
       }),
     });
 
-    layer!.source!.elements!.add(imageElement);
+    layer!.source = imageElement;
     view?.goTo(
       new Extent({
         spatialReference: {

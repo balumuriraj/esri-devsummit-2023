@@ -13,7 +13,7 @@
     "copy": "ncp ./node_modules/@esri/calcite-components/dist/calcite/assets/ ./public/assets/"
   },
   "dependencies": {
-    "@arcgis/core": "^4.25.5",
+    "@arcgis/core": "^4.26.4",
     "@esri/calcite-components": "^1.0.7",
     "@esri/calcite-components-react": "^1.0.4",
     "ncp": "^2.0.0",
@@ -23,7 +23,7 @@
     "react-router-dom": "^6.8.1"
   },
   "devDependencies": {
-    "@types/arcgis-js-api": "^4.25.0",
+    "@types/arcgis-js-api": "^4.26.0",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
