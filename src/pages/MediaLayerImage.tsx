@@ -49,7 +49,7 @@ function MediaLayerImages() {
     esriConfig.portalUrl = "http://arcgis.com/";
 
     const map = new Map({
-      basemap: "satellite"
+      basemap: "satellite",
       // basemap: {
       //   portalItem: {
       //     id: "3582b744bba84668b52a16b0b6942544",
@@ -60,7 +60,7 @@ function MediaLayerImages() {
     const view = new MapView({
       container: viewDivRef?.current,
       map: map,
-      zoom: 3
+      zoom: 3,
     });
 
     view.ui.add(
@@ -71,12 +71,6 @@ function MediaLayerImages() {
           expanded: true,
           group: "group1",
           expandTooltip: "MediaLayer",
-        }),
-        new Expand({
-          view: view,
-          content: codeControlPointsGeoreferenceRef?.current!,
-          group: "group1",
-          expandTooltip: "ControlPointsGeoreference",
         }),
       ],
       "top-left"
@@ -136,7 +130,7 @@ function MediaLayerImages() {
       } else if (swipe.position === 75) {
         isLeft = true;
         count++;
-      }      
+      }
     }, 1);
 
     // add the widget to the view
@@ -149,63 +143,6 @@ function MediaLayerImages() {
         xmax: -324839.58261292917,
         ymax: 7067371.687353565,
       }).expand(1)
-    );
-  }
-
-  function runControlPointsGeoreference() {
-    const imageElement = new ImageElement({
-      image: `/Florence.jpeg`,
-      georeference: new ControlPointsGeoreference({
-        width: 1000,
-        height: 755,
-        controlPoints: [
-          {
-            sourcePoint: { x: 333.1103679715381, y: 701.3716189418546 },
-            mapPoint: new Point({
-              x: 1253618.039700887,
-              y: 5431979.08855724,
-              spatialReference: { wkid: 102100 },
-            }),
-          },
-          {
-            sourcePoint: { x: 398.7804080468498, y: 210.55393624690095 },
-            mapPoint: new Point({
-              x: 1253341.6272831117,
-              y: 5429407.568274674,
-              spatialReference: { wkid: 102100 },
-            }),
-          },
-          {
-            sourcePoint: { x: 782.5730994340726, y: 32.883345812941776 },
-            mapPoint: new Point({
-              x: 1251382.0560864767,
-              y: 5428515.5447955085,
-              spatialReference: { wkid: 102100 },
-            }),
-          },
-          {
-            sourcePoint: { x: 584.0987277033045, y: 575.8665575893785 },
-            mapPoint: new Point({
-              x: 1252304.6469130863,
-              y: 5431344.704144045,
-              spatialReference: { wkid: 102100 },
-            }),
-          },
-        ],
-      }),
-    });
-
-    layer!.source = imageElement;
-    view?.goTo(
-      new Extent({
-        spatialReference: {
-          wkid: 102100,
-        },
-        xmax: 1255341.985632734,
-        xmin: 1249946.5201307742,
-        ymax: 5432421.928455123,
-        ymin: 5428347.876590912,
-      }).expand(1.5)
     );
   }
 
@@ -224,45 +161,6 @@ function MediaLayerImages() {
   })
 });`;
 
-  const codeControlPointsGeoreference = `new ControlPointsGeoreference({  
-  controlPoints: [
-    {
-      sourcePoint: { x: 0, y: 669 },
-      mapPoint: new Point({ 
-        x: -10046739.695935503, 
-        y: 3486942.691935667, 
-        spatialReference: { wkid: 102100 } 
-      }),
-    },
-    {
-      sourcePoint: { x: 0, y: 0 },
-      mapPoint: new Point({
-        x: -10046739.695935503,
-        y: 3514979.040597104,
-        spatialReference: { wkid: 102100 },
-      }),
-    },
-    {
-      sourcePoint: { x: 1246, y: 0 },
-      mapPoint: new Point({
-        x: -10001415.789436923,
-        y: 3514979.040597104,
-        spatialReference: { wkid: 102100 },
-      }),
-    },
-    {
-      sourcePoint: { x: 1246, y: 669 },
-      mapPoint: new Point({
-        x: -10001415.789436923,
-        y: 3486942.691935667,
-        spatialReference: { wkid: 102100 },
-      }),
-    },
-  ],
-  width: 1246,
-  height: 669
-})`;
-
   return (
     <div className="App">
       <div id="view" ref={viewDivRef}></div>
@@ -275,17 +173,6 @@ function MediaLayerImages() {
           className="btn"
           icon-start="play"
           onClick={runMediaLayer}
-        ></CalciteButton>
-      </div>
-      <div ref={codeControlPointsGeoreferenceRef} className="card">
-        <p>ControlPointsGeoreference</p>
-        <pre className="line-numbers">
-          <code className="language-js">{codeControlPointsGeoreference}</code>
-        </pre>
-        <CalciteButton
-          className="btn"
-          icon-start="play"
-          onClick={runControlPointsGeoreference}
         ></CalciteButton>
       </div>
     </div>

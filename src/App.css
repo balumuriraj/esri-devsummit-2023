@@ -31,6 +31,10 @@ body {
   margin-left: 20px;
 }
 
+.card pre code {
+  font-size: 14px;
+}
+
 .slider {
   padding: 5px;
   margin-bottom: 10px;

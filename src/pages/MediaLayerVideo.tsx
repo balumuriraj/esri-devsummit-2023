@@ -56,7 +56,7 @@ function MediaLayerVideo() {
     const view = new SceneView({
       container: viewDivRef?.current,
       map: map,
-      center: [-80, 40],
+      center: [-65, 40],
       constraints: {
         altitude: {
           min: 2000000,
@@ -108,23 +108,6 @@ function MediaLayerVideo() {
     await layer.when();
 
     setLayer(layer);
-
-    const slider = new Slider({
-      min: 0,
-      max: 1,
-      precision: 2,
-      values: [1],
-      visibleElements: {
-        labels: true,
-        rangeLabels: true,
-      },
-      container: sliderRef!.current!,
-    });
-
-    slider.on("thumb-drag", (event) => {
-      const { value } = event;
-      layer.opacity = value;
-    });
   }
 
   const code = 
