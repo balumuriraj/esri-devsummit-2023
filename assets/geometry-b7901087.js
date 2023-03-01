@@ -1,1 +1,0 @@
-import{S as o}from"./ArrayPool-a8ee9378.js";import{p,a as t,w as i}from"./Extent-da876e26.js";import{b as m,d as e,v as r}from"./Polyline-ff2d7c6b.js";import"./typeUtils-35750739.js";const a={base:p,key:"type",typeMap:{extent:t,multipoint:m,point:i,polyline:e,polygon:r}};o(a);export{a as i};
