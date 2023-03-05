@@ -83,7 +83,7 @@ function MediaLayerVideo() {
   async function run() {
     const element = new VideoElement({
       video:
-        "/aerosol.mp4",
+        "aerosol.mp4",
       georeference: new ExtentAndRotationGeoreference({
         extent: new Extent({
           xmin: -150,

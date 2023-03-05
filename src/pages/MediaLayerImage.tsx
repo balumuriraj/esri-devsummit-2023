@@ -7,9 +7,6 @@ import Expand from "@arcgis/core/widgets/Expand";
 import ImageElement from "@arcgis/core/layers/support/ImageElement";
 import ExtentAndRotationGeoreference from "@arcgis/core/layers/support/ExtentAndRotationGeoreference";
 import Extent from "@arcgis/core/geometry/Extent";
-import { Point } from "@arcgis/core/geometry";
-import ControlPointsGeoreference from "@arcgis/core/layers/support/ControlPointsGeoreference";
-import CornersGeoreference from "@arcgis/core/layers/support/CornersGeoreference";
 import esriConfig from "@arcgis/core/config";
 import Swipe from "@arcgis/core/widgets/Swipe";
 
@@ -27,7 +24,6 @@ import "prismjs/plugins/line-numbers/prism-line-numbers.css";
 function MediaLayerImages() {
   const viewDivRef = useRef<HTMLDivElement>(null);
   const codeMediaLayerRef = useRef<HTMLDivElement>(null);
-  const codeControlPointsGeoreferenceRef = useRef<HTMLDivElement>(null);
 
   const [view, setView] = useState<MapView | null>(null);
   const [layer, setLayer] = useState<MediaLayer | null>(null);
