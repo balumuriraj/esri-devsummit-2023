@@ -145,15 +145,18 @@ function MediaLayerImages() {
   const codeMediaLayer = `new MediaLayer({ 
   source: new ImageElement({
     image: "/Liverpool.png",
-    georeference: new ExtentAndRotationGeoreference({
-      extent: new Extent({
-        spatialReference: { wkid: 102100 },
-        xmin: -339441.5168570463,
-        ymin: 7051887.318179514,
-        xmax: -324839.58261292917,
-        ymax: 7067371.687353565,
+    georeference: 
+      new ExtentAndRotationGeoreference({
+        extent: new Extent({
+          spatialReference: { 
+            wkid: 102100 
+          },
+          xmin: -339441.5168570463,
+          ymin: 7051887.318179514,
+          xmax: -324839.58261292917,
+          ymax: 7067371.687353565,
+        })
       })
-    })
   })
 });`;
 
@@ -161,7 +164,7 @@ function MediaLayerImages() {
     <div className="App">
       <div id="view" ref={viewDivRef}></div>
       <div ref={codeMediaLayerRef} className="card">
-        <p>MediaLayer</p>
+        <p className="title">MediaLayer</p>
         <pre className="line-numbers">
           <code className="language-js">{codeMediaLayer}</code>
         </pre>

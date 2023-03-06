@@ -111,23 +111,27 @@ function MediaLayerVideo() {
   }
 
   const code = 
-  `new MediaLayer({ 
-    source: new VideoElement({
-      video: "/aerosol.mp4",
-      georeference: new ExtentAndRotationGeoreference({
+`new MediaLayer({ 
+  source: new VideoElement({
+    video: "/aerosol.mp4",
+    georeference: 
+      new ExtentAndRotationGeoreference({
         extent: new Extent({
-          xmin: -150, ymin: 1, xmax: 20, ymax: 80,
+          xmin: -150, 
+          ymin: 1, 
+          xmax: 20, 
+          ymax: 80,
           spatialReference: { wkid: 4326 }
         })
       })
-    }) 
-  });`;
+  }) 
+});`;
 
   return (
     <div className="App">
       <div id="view" ref={viewDivRef}></div>
       <div ref={codeRef} className="card">
-        <p>MediaLayer</p>
+        <p className="title">MediaLayer</p>
         <pre className="line-numbers">
           <code className="language-js">{code}</code>
         </pre>

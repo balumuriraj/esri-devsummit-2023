@@ -26,13 +26,14 @@ body {
   right: 5px;
 }
 
-.card p {
+.title {
   font-weight: bold;
   margin-left: 20px;
+  font-size: 18px;
 }
 
 .card pre code {
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .slider {
