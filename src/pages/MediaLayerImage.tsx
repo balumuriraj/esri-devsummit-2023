@@ -147,14 +147,14 @@ function MediaLayerImages() {
     image: "/Liverpool.png",
     georeference: 
       new ExtentAndRotationGeoreference({
-        extent: new Extent({
-          spatialReference: { 
-            wkid: 102100 
-          },
+        extent: new Extent({          
           xmin: -339441.5168570463,
           ymin: 7051887.318179514,
           xmax: -324839.58261292917,
           ymax: 7067371.687353565,
+          spatialReference: { 
+            wkid: 102100 
+          }
         })
       })
   })
