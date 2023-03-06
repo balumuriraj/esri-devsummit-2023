@@ -1,0 +1,1 @@
+import{bo as r,vw as m,aR as s}from"./index-738d935d.js";import{p as c}from"./queryTopFeatures-8c52ddd7.js";async function u(o,a,e){const n=r(o),t=await c(n,m.from(a),{...e});return{count:t.data.count,extent:s.fromJSON(t.data.extent)}}export{u as executeForTopExtents};
