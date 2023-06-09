@@ -1,1 +1,0 @@
-import{a2 as c,iI as r}from"./calcite-8912bd40.js";const o=96;function a(t,e){const n=e||t.extent,i=t.width,f=c(n&&n.spatialReference);return n&&i?n.width/i*f*r*o:0}function s(t,e){return t/(c(e)*r*o)}function d(t){return t/(r*o)}export{a as i,d as o,s as r};
