@@ -1,11 +1,12 @@
 import { HashRouter as Router, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/Home";
-import MediaLayerImage from "./pages/MediaLayerImage";
-import MediaLayerVideo from "./pages/MediaLayerVideo";
-import MediaLayerWebmap from "./pages/MediaLayerWebmap";
-
 import "./App.css";
+import { lazyWithRetries } from "./support/utils";
+
+const Home = lazyWithRetries(() => import("./pages/Home"));
+const MediaLayerImage = lazyWithRetries(() => import("./pages/MediaLayerImage"));
+const MediaLayerVideo = lazyWithRetries(() => import("./pages/MediaLayerVideo"));
+const MediaLayerWebmap = lazyWithRetries(() => import("./pages/MediaLayerWebmap"));
 
 function App() {
   return (
