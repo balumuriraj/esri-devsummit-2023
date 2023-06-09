@@ -25,7 +25,7 @@ function MediaLayerWebmap() {
 
     const webmap = new WebMap({
       portalItem: {
-        id: "769b776b17c4406493b5f96044c26696" // 4779f8c1002443c68eb4c7fbb9baf88c
+        id: "4779f8c1002443c68eb4c7fbb9baf88c" // 4779f8c1002443c68eb4c7fbb9baf88c
       }
     });
 

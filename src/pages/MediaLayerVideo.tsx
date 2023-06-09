@@ -83,7 +83,7 @@ function MediaLayerVideo() {
   async function run() {
     const element = new VideoElement({
       video:
-        "aerosol.mp4",
+        "https://arcgis.github.io/arcgis-samples-javascript/sample-data/media-layer/videos/hurricanes_aerosol-aug.mp4",
       georeference: new ExtentAndRotationGeoreference({
         extent: new Extent({
           xmin: -150,
