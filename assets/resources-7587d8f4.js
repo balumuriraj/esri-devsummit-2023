@@ -1,0 +1,1 @@
+import{_ as a}from"./index-00759e4a.js";import{cU as f}from"./calcite-8912bd40.js";import{t as i}from"./requestImageUtils-d1ba3b36.js";async function s(t){const o=a(()=>import("./mask-svg-023bbc42.js"),[]),r=a(()=>import("./overlay-svg-d62383f3.js"),[]),_=i((await o).default,{signal:t}),e=i((await r).default,{signal:t}),m={mask:await _,overlay:await e};return f(t),m}export{s};

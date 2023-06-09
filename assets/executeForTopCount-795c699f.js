@@ -1,1 +1,0 @@
-import{ha as n,q8 as m}from"./calcite-c5ae4991.js";import{a as s}from"./queryTopFeatures-beb2732c.js";import"./index-9a6385f7.js";async function f(o,t,a){const r=n(o);return(await s(r,m.from(t),{...a})).data.count}export{f as executeForTopCount};

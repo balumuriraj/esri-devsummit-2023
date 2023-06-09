@@ -1,0 +1,1 @@
+import{ha as n,q8 as m,w as p}from"./calcite-8912bd40.js";import{p as c}from"./queryTopFeatures-04ccb275.js";import"./index-00759e4a.js";async function u(o,a,r){const e=n(o),t=await c(e,m.from(a),{...r});return{count:t.data.count,extent:p.fromJSON(t.data.extent)}}export{u as executeForTopExtents};
