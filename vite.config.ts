@@ -5,4 +5,11 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/esri-devsummit-2023/#',
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: () => 'everything.js'
+      }
+    }
+  }
 })

@@ -8,7 +8,6 @@ import VideoElement from "@arcgis/core/layers/support/VideoElement";
 import ExtentAndRotationGeoreference from "@arcgis/core/layers/support/ExtentAndRotationGeoreference";
 import Extent from "@arcgis/core/geometry/Extent";
 import esriConfig from "@arcgis/core/config";
-import Slider from "@arcgis/core/widgets/Slider";
 
 import "@esri/calcite-components/dist/components/calcite-button";
 import { CalciteButton } from "@esri/calcite-components-react";
